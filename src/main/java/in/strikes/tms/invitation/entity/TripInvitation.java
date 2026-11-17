@@ -1,4 +1,44 @@
-package in.strikes.tms.trip.entity;
+package in.strikes.tms.invitation.entity;
 
+import in.strikes.tms.trip.entity.Trip;
+import in.strikes.tms.trip.entity.TripMemberRole;
+import in.strikes.tms.user.entity.User;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "trip_invitation")
+@Getter
+@Setter
+@NoArgsConstructor
 public class TripInvitation {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "trip_id", nullable = false)
+    private Trip trip;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "invited_by_id", nullable = false)
+    private User invitedBy;
+
+    @Column(name = "invitee_email", nullable = false, length = 150)
+    private String inviteeEmail;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private TripMemberRole proposedRole = TripMemberRole.VIEWER;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private InvitationStatus status = InvitationStatus.PENDING;
+
+    @Column(name = "expires_at", nullable = false)
+    private LocalDateTime expiresAt;
 }
