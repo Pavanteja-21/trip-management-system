@@ -1,5 +1,6 @@
 package in.strikes.tms.itinerary.entity;
 
+import in.strikes.tms.common.entity.BaseEntity;
 import in.strikes.tms.trip.entity.Trip;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -15,7 +16,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Itinerary {
+public class Itinerary extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

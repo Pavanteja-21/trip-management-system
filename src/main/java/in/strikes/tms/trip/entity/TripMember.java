@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
@@ -37,5 +38,5 @@ public class TripMember extends BaseEntity {
     private TripMemberRole role = TripMemberRole.VIEWER;
 
     @Column(name = "joined_at", nullable = false)
-    private LocalTime joinedAt;
+    private LocalDateTime joinedAt;
 }

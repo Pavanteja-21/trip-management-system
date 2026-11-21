@@ -1,5 +1,6 @@
 package in.strikes.tms.invitation.entity;
 
+import in.strikes.tms.common.entity.BaseEntity;
 import in.strikes.tms.trip.entity.Trip;
 import in.strikes.tms.trip.entity.TripMemberRole;
 import in.strikes.tms.user.entity.User;
@@ -11,11 +12,11 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "trip_invitation")
+@Table(name = "invitations")
 @Getter
 @Setter
 @NoArgsConstructor
-public class TripInvitation {
+public class TripInvitation extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

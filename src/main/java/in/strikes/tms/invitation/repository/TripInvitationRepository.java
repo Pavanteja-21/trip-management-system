@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface TripInvitationRepository extends JpaRepository<TripInvitation, Long> {
 
-    List<TripInvitation> findByEmailIgnoreCase(String inviteeEmail);
+    List<TripInvitation> findByInviteeEmailIgnoreCase(String inviteeEmail);
 
     List<TripInvitation> findByTripId(Long tripId);
 
