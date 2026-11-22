@@ -27,7 +27,7 @@ public class BalanceService {
     private final SettlementRepository settlementRepository;
 
     @Transactional(readOnly = true)
-    public List<MemberBalanceResponse> getBalance(Long tripId) {
+    public List<MemberBalanceResponse> getBalances(Long tripId) {
         List<TripMember> members = tripMemberRepository.findByTripId(tripId);
         List<Expense> expenses = expenseRepository.findByTripIdOrderByExpenseDateDesc(tripId);
         List<Settlement> settlements = settlementRepository.findByTripIdOrderBySettleAtDesc(tripId);
