@@ -10,6 +10,7 @@ import in.strikes.tms.user.entity.User;
 import in.strikes.tms.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,7 +21,7 @@ public class SettlementService {
     private final TripMemberRepository tripMemberRepository;
     private final UserRepository userRepository;
 
-
+    @Transactional
     public Settlement createSettlement(Long tripId, Long payerId, CreateSettlementRequest request) {
 
         if(payerId.equals(request.payeeId())) {
